@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "realtime-sports-api"
+version = "0.1.0"
+description = "Official Python client for the Realtime Sports API: live scores, play-by-play, box scores, schedules, teams, athletes, injuries, news, odds, webhooks and a WebSocket stream."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [{ name = "Realtime Sports API" }]
+keywords = ["sports", "sports-api", "live-scores", "nfl", "nba", "mlb", "nhl", "soccer", "college-football", "play-by-play", "odds", "websocket"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Framework :: AsyncIO",
+  "Typing :: Typed",
+]
+dependencies = ["httpx>=0.24,<1"]
+
+[project.optional-dependencies]
+stream = ["websockets>=12"]
+dev = ["pytest>=7", "pytest-asyncio>=0.23", "websockets>=12", "build>=1.0", "twine>=5"]
+
+[project.urls]
+Homepage = "https://www.realtimesportsapi.com"
+Documentation = "https://www.realtimesportsapi.com/docs"
+Source = "https://github.com/ElcoDevRepos/realtime-sports-api-python"
+Issues = "https://github.com/ElcoDevRepos/realtime-sports-api-python/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/realtime_sports_api"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/realtime_sports_api", "tests", "scripts", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
